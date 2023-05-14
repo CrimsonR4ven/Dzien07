@@ -1,0 +1,27 @@
+﻿@model List<Person>
+
+@{
+	ViewData["Title"] = "List";
+}
+<h1>@ViewData["Title"]</h1>
+<hr />
+<table class="table table-bordered">
+	<tr>
+		<th>Person Name</th>
+		<th>Person Age</th>
+		<th></th>
+	</tr>
+	@foreach(var person in Model)
+	{
+		<tr>
+			<td>@person.PersonName</td>
+			<td>@person.PersonAge</td>
+			<td>
+				@Html.ActionLink("Details", "Details", new{id=person.PersonId}, new {@class = "btn btn-primary"}) |
+				@Html.ActionLink("Edit", "Edit", new{id=person.PersonId}, new {@class = "btn btn-secondary"}) |
+				@Html.ActionLink("Delete", "Delete", new{id=person.PersonId}, new {@class = "btn btn-danger"})
+			</td>
+		</tr>
+	}
+</table>
+<p>@Html.ActionLink("New", "Create", new{} , new {@class = "btn btn-success"})</p>
